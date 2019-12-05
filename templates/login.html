@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../static/css/login.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="login-area container text-center">
+      <div class="row my-auto">
+        <div class="card card-main col-lg-4 mx-auto">
+          <h1 class="login-title">Login Here!</h1>
+          <form class="login-form " method="post" >
+            <div class="form-group">
+              <input id='username' class="form-control" type="text" placeholder="Username">
+              <small id="userwarn" class="form-text text-danger"> </small>
+            </div>
+            <div class="form-group">
+              <input id='password' class="form-control" type="password" placeholder="Password">
+              <small id="passwarn" class="form-text text-danger"> </small>
+            </div>
+            <button id='login-submit' class="btn btn-primary " type="submit" >Login</button>
+            <br>
+            <a class="" href="/register">not have an account register here!</a>
+            <br>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./static/js/login.js"></script>
+  </body>
+</html>

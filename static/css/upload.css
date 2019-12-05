@@ -1,0 +1,26 @@
+.upload-area{
+  padding-top: 26vh;
+}
+
+.card-main{
+  padding: 16px 30px !important;
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.type-area{
+  margin-top: 1rem;
+}
+
+.upload-title{
+  color: #313438;
+  margin-bottom: 19px;
+}
+
+.upload-button{
+  margin-top: 5px;
+}
+
+body{
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #36d1dc, #5b86e5) !important;
+}

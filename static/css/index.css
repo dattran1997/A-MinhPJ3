@@ -1,0 +1,157 @@
+.nav-area{
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.top-header{
+    background-image: url(../image/main-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding-top: 6%;
+    padding-bottom: 8%
+}
+
+.search-input{
+  padding: 1.375rem 1.75rem !important;
+}
+
+.filter-list{
+  list-style-type: none;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  background-color: #f3f3f3;
+}
+
+.filter-list button{
+  background-color: #0000; /* Green */
+  border: none;
+  color: white;
+  padding: 11px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  color: rgba(74,74,74,.75);
+  font-weight: 500!important
+  cursor: pointer;
+}
+
+.filter-list button:focus {
+  outline:0;
+}
+
+.filter-list .active{
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.stock-container-main{
+  min-height: 600px;
+  border-top: 1px solid #dfdfdf;
+  background-color: #f3f3f3;
+  padding-top: 26px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.view-more-button{
+  position: absolute;
+  bottom: 2px;
+}
+
+.stock-container{
+
+}
+
+.masonry {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.masonry-brick {
+  position: relative;
+  flex: auto;
+  height: 250px;
+  min-width: 150px;
+  margin: 0 8px 8px 0; /* Some gutter */
+  border-radius: 5px;
+}
+
+.masonry-brick:nth-child(4n+1) {
+  width: 250px;
+}
+.masonry-brick:nth-child(4n+2) {
+  width: 325px;
+}
+.masonry-brick:nth-child(4n+3) {
+  width: 180px;
+}
+.masonry-brick:nth-child(4n+4) {
+  width: 380px;
+}
+
+.search-icon{
+  font-size: 1.9rem;
+}
+
+.card-image{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(80%);
+}
+
+.card-box-overlay{
+  display: none;
+  padding-left: 25px;
+  text-align: left;
+  color: white;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background: linear-gradient(rgba(8,25,43,0),rgba(8,25,43,.85)) top;
+}
+
+.card-box-overlay p{
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 90%;
+  position: absolute;
+  top: 79%;
+  text-transform: uppercase;
+}
+
+.stock-container a:hover  .card-box-overlay{
+  display: block;
+}
+
+.footer-area{
+  height: 31vh;
+  padding: 39px;
+}
+
+.footer-area h3{
+  font-size: 22px;
+  color: white;
+}
+
+.footer-area p{
+  font-size: 13px;
+  color: hsla(0,0%,100%,.7);
+}
+
+.footer-area i{
+  font-size: 26px;
+}
+
+.bottom-text{
+  color: hsla(0,0%,100%,.7);
+  border-top: 1px solid #374957;
+  height: 4vh;
+  padding-right: 10px;
+  margin-bottom: 0px;
+}

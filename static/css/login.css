@@ -1,0 +1,20 @@
+.login-area{
+  padding-top: 28vh;
+}
+.login-title{
+  color: #313438;
+  margin-top: 3px ;
+  margin-bottom: 30px ;
+}
+
+.card-main{
+  padding: 9px 29px !important;
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3); */
+  /* box-shadow: 0 10px 6px -6px #777; */
+}
+
+body{
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #36d1dc, #5b86e5) !important;
+}

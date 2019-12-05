@@ -1,0 +1,84 @@
+.nav-area{
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.detail-preview{
+  height: 60vh;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-img{
+  display: inline-block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 50vh;
+}
+
+.detail-sidebar{
+  border-left: 1px solid #dfdfdf;
+}
+
+.interact-area{
+  margin: 10px 0px;
+}
+
+.heart-icon{
+  font-size: 30px;
+}
+
+.like-number{
+  font-size: 8px;
+}
+
+.like-container{
+  padding-top: 5px;
+  border-right: 2px solid #dfdfdf;
+}
+
+.download-container{
+  padding-right: 25px !important;
+}
+
+.delete-container{
+  padding-right: 20px !important;
+}
+
+.info-area{
+  padding: 10px 0px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.author-area{
+  padding: 10px 0px;
+}
+
+.footer-area{
+  height: 31vh;
+  padding: 39px;
+}
+
+.footer-area h3{
+  font-size: 22px;
+  color: white;
+}
+
+.footer-area p{
+  font-size: 13px;
+  color: hsla(0,0%,100%,.7);
+}
+
+.footer-area i{
+  font-size: 26px;
+}
+
+.bottom-text{
+  color: hsla(0,0%,100%,.7);
+  border-top: 1px solid #374957;
+  height: 3vh;
+  padding-right: 10px;
+  margin-bottom: 0px;
+}
