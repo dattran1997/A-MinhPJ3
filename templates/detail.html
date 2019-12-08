@@ -65,7 +65,7 @@
           {% if session['ids'] or session['admin_logged'] %}
             {% if usr_id == session['ids'] or session['admin_ids'] %}
               <div class="col-lg-6" style="padding-right: 0px">
-                <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+                <a href="/download/{{post_info.thumbnail}}" class="btn btn-success form-control">Download</a>
               </div>
               <div class="col-lg-3 delete-container">
                 <a href="/post_delete/{{post_info._id}}" class="btn btn-danger form-control">
@@ -74,12 +74,12 @@
               </div>
             {% else %}
               <div class="col-lg-9 download-container">
-                <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+                <a href="/download/{{post_info.thumbnail}}" class="btn btn-success form-control">Download</a>
               </div>
             {% endif %}
           {% else %}
             <div class="col-lg-9 download-container">
-              <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+              <a href="/download/{{post_info.thumbnail}}" class="btn btn-success form-control">Download</a>
             </div>
           {% endif %}
         </div>

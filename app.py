@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session, jsonify
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify, send_from_directory
 from bson.json_util import dumps,loads
 from bson.objectid import ObjectId
 from models.collection import User, Post, Admin
@@ -80,6 +80,11 @@ def upload():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
         Post.insert_one({'title': title, 'type': type, 'link': link, 'thumbnail': file_name, 'like': [], 'check':False, "author": user_data})
         return redirect("/")
+
+@app.route('/download/<path:filename>')
+def download(filename):
+    # print(filename)
+    return send_from_directory(directory=app.config['UPLOAD_FOLDER'], filename= filename, as_attachment=True)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
