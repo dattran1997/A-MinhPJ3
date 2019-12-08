@@ -30,6 +30,10 @@
   font-size: 30px;
 }
 
+.full-heart-icon{
+  font-size: 30px;
+}
+
 .like-number{
   font-size: 8px;
 }
@@ -81,4 +85,10 @@
   height: 3vh;
   padding-right: 10px;
   margin-bottom: 0px;
+}
+
+.admin-interact{
+  margin-top: 25px;
+  padding: 10px 0px;
+  border-top: 1px solid #dfdfdf;
 }

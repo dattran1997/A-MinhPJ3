@@ -40,31 +40,68 @@
         </div>
         <div class="row interact-area">
           <div class="col-lg-3 text-center like-container">
-            <span class="like-number">10
-              {% if post_info.author.id in post_info.like %}
-                <i class="fas fa-heart"></i>
+            <span class="like-number">{{like}}
+              {% if session['loggedin'] %}
+                {% if session['username'] in post_info.like %}
+                  <a href="/post_dislike/{{post_info._id}}/{{session['username']}}">
+                    <i class="fa fa-heart full-heart-icon"></i>
+                  </a>
+                {% else %}
+                  <a href="/post_like/{{post_info._id}}/{{session['username']}}">
+                    <i class="far fa-heart heart-icon"></i>
+                  </a>
+                {% endif %}
               {% else %}
-                <i class="far fa-heart heart-icon"></i>
+                <a href="/login">
+                  <i class="far fa-heart heart-icon"></i>
+                </a>
               {% endif %}
+              
             </span>
           </div>
 
+          <!-- download check usr -->
           
-          <!-- <div class="col-lg-9 download-container">
-            <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
-          </div> -->
-
-          <div class="col-lg-6" style="padding-right: 0px">
-            <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
-          </div>
-          <div class="col-lg-3 delete-container">
-            <a href="#" class="btn btn-danger form-control">
-              <i class="far fa-trash-alt"></i>
-            </a>
-          </div>
-
-
+          {% if session['ids'] or session['admin_logged'] %}
+            {% if usr_id == session['ids'] or session['admin_ids'] %}
+              <div class="col-lg-6" style="padding-right: 0px">
+                <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+              </div>
+              <div class="col-lg-3 delete-container">
+                <a href="/post_delete/{{post_info._id}}" class="btn btn-danger form-control">
+                  <i class="far fa-trash-alt"></i>
+                </a>
+              </div>
+            {% else %}
+              <div class="col-lg-9 download-container">
+                <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+              </div>
+            {% endif %}
+          {% else %}
+            <div class="col-lg-9 download-container">
+              <a href="{{post_info.link}}" class="btn btn-success form-control">Download</a>
+            </div>
+          {% endif %}
         </div>
+
+        {% if session['admin_logged'] %}
+          <div class="admin-interact text-center">
+            {% if post_info.check == False %}
+              <div class="col-lg-10 mx-auto mb-2">
+                <a href="/post_allow/{{post_info._id}}" class="btn btn-primary bt-lg form-control">Allow Post</a>
+                <br>
+                <a href="/admin_page/waiting">Manager Page</a>
+              </div>
+            {% else %}
+              <div class="col-lg-10 mx-auto">
+                <a href="/post_ban/{{post_info._id}}" class="btn btn-danger bt-lg form-control">Ban Post</a>
+                <a href="/admin_page/waiting">Manager Page</a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+
       </div>
     </section>
     <footer class="footer-area bg-dark">

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 from bson.json_util import dumps,loads
 from bson.objectid import ObjectId
-from models.collection import User, Post
+from models.collection import User, Post, Admin
 import os
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
@@ -29,8 +29,14 @@ def index():
 def detail(id):
     # print(id)
     post_info = Post.find_one({"_id": ObjectId(id)})
+    usr_id = str(post_info['author']['id'])
     # print(post_info)
-    return render_template('detail.html',post_info = post_info)
+    # print(type(session['ids']))
+    # print(usr_id)
+    like_data = post_info['like']
+    like = len(like_data)
+
+    return render_template('detail.html',post_info = post_info, usr_id = usr_id, like = like)
 
 @app.route('/user/<id>')
 def user(id):
@@ -150,5 +156,121 @@ def postdata(type):
         "post_list": post_list
     })
 
+@app.route('/post_like/<post_id>/<viewer_name>')
+def post_like(post_id, viewer_name):
+    post_data = Post.find_one({'_id': ObjectId(post_id)})
+    # print(post_data['like'])
+    like_list = post_data['like']
+    like_list.append(viewer_name)
+
+    Post.update_one(
+        {'_id': ObjectId(post_id)},
+        {'$set':{'like': like_list}}
+    )
+    # return redirect(url_for('detail', id = post_id))
+    return redirect('/detail/'+post_id)
+
+@app.route('/post_dislike/<post_id>/<viewer_name>')
+def post_dislike(post_id, viewer_name):
+    post_data = Post.find_one({'_id': ObjectId(post_id)})
+    # print(post_data['like'])
+    like_list = post_data['like']
+    like_list.remove(viewer_name)
+
+    Post.update_one(
+        {'_id': ObjectId(post_id)},
+        {'$set':{'like': like_list}}
+    )
+    return redirect('/detail/'+post_id)
+
+@app.route('/post_delete/<id>')
+def post_delete(id):
+    try:
+        Post.delete_one({'_id': ObjectId(id)})
+        print('post delete')
+
+        return redirect('/')
+    except:
+        return jsonify({
+            'message': 'post delete fail'
+        })
+
+@app.route('/post_allow/<id>')
+def post_allow(id):
+    Post.update_one(
+        {'_id': ObjectId(id)}, 
+        {'$set': {'check': True}}
+    )
+    return redirect('/admin_page/checked')
+
+@app.route('/post_ban/<id>')
+def post_ban(id):
+    Post.update_one(
+        {'_id': ObjectId(id)},
+        {'$set': {'check': False}}
+    )
+    return redirect('/admin_page/waiting')
+
+
+@app.route('/admin_login',methods=['GET', 'POST'])
+def admin_login():
+    if request.method == "GET":
+        if 'admin_logged' in session:
+            return redirect('/admin_page/waiting')
+        else:
+            return render_template('admin_login.html')
+    elif request.method == "POST":
+        username = request.json['username']
+        password = request.json['password']
+        valid_user = Admin.find_one({'username': username})
+        print(valid_user)
+        if valid_user:
+            if valid_user['password'] == password:
+                session['admin_logged'] = True
+                session['admin_name'] = username
+                session['admin_ids'] = str(valid_user['_id'])
+
+                print(session['admin_name'])
+                print(session['admin_ids'])
+                return jsonify({
+                    "username": username,
+                    "id": session['id'],
+                })
+            else:
+                return jsonify({
+                    "passwarn": 'wrong password',
+                })
+        else:
+            return jsonify({
+                "userwarn": 'admin not exist'
+            })
+
+@app.route('/admin_logout')
+def admin_logout():
+    del session['admin_logged'] 
+    del session['admin_name']
+    del session['admin_ids']
+    return redirect('/admin_login')
+
+@app.route('/admin_page/<page>')
+def admin_page(page):
+    if 'admin_logged' in session:
+        post_list = []
+        posts = Post.find()
+        # print(posts)
+        for post in posts:
+            post_list.append(post)
+        post_list.reverse()
+        print(post_list)
+
+        if page == 'waiting':
+            return render_template('admin_waiting_post.html', posts = post_list)
+        elif page == 'checked':
+            return render_template('admin_checked_post.html', posts = post_list)
+        else:
+            return 'page not found 404!' 
+    else:
+        return redirect('/admin_login')
+    
 if __name__ == '__main__':
   app.run(debug=True)

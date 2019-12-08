@@ -10,3 +10,9 @@ freepix_database = client.db_freepix
 
 User = freepix_database["User"]
 Post = freepix_database['Post']
+Admin = freepix_database['Admin']
+
+# Admin.insert_one({
+#     'username': 'admin',
+#     'password': 'admin'
+# })

@@ -15,16 +15,18 @@ $( document ).ready(function() {
       post_list.reverse();
       post_list.forEach(function(post){
         // console.log(post._id.$oid);
-        $(".stock-container").append(
-          `
-            <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
-              <div class="card-box-overlay">
-                <p id='overlay-title'>${post.title}</p>
-              </div>
-              <img class="card-image" src="../static/image/${post.thumbnail}" >
-            </a>
-          `
-        );
+        if(post.check == true){
+          $(".stock-container").append(
+            `
+              <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
+                <div class="card-box-overlay">
+                  <p id='overlay-title'>${post.title}</p>
+                </div>
+                <img class="card-image" src="../static/image/${post.thumbnail}" >
+              </a>
+            `
+          );
+        }
       });
     },
     error: function (__xhr,__statusCode,error){
@@ -47,16 +49,18 @@ $( document ).ready(function() {
         // console.log(post.title);
         // console.log(post.title.toLowerCase().includes(search_key.toLowerCase()));
         if (post.title.toLowerCase().includes(search_key.toLowerCase())){
-          $(".stock-container").append(
-            `
-              <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
-                <div class="card-box-overlay">
-                  <p id='overlay-title'>${post.title}</p>
-                </div>
-                <img class="card-image" src="../static/image/${post.thumbnail}" >
-              </a>
-            `
-          );
+          if(post.check == true){
+            $(".stock-container").append(
+              `
+                <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
+                  <div class="card-box-overlay">
+                    <p id='overlay-title'>${post.title}</p>
+                  </div>
+                  <img class="card-image" src="../static/image/${post.thumbnail}" >
+                </a>
+              `
+            );
+          }
         }
       });
     }
@@ -83,16 +87,19 @@ $( document ).ready(function() {
         post_list.reverse();
         post_list.forEach(function(post){
           // console.log(post._id.$oid);
-          $(".stock-container").append(
-            `
-              <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
-                <div class="card-box-overlay">
-                  <p id='overlay-title'>${post.title}</p>
-                </div>
-                <img class="card-image" src="../static/image/${post.thumbnail}" >
-              </a>
-            `
-          );
+          if(post.check == true){
+            $(".stock-container").append(
+              `
+                <a class="card-box masonry-brick" href="/detail/${post._id.$oid}">
+                  <div class="card-box-overlay">
+                    <p id='overlay-title'>${post.title}</p>
+                  </div>
+                  <img class="card-image" src="../static/image/${post.thumbnail}" >
+                </a>
+              `
+            );
+          }
+          
         });
       },
       error: function (__xhr,__statusCode,error){
