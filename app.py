@@ -190,15 +190,24 @@ def post_dislike(post_id, viewer_name):
 
 @app.route('/post_delete/<id>')
 def post_delete(id):
-    try:
-        Post.delete_one({'_id': ObjectId(id)})
-        print('post delete')
+    if 'loggedin' in session:
+        post_data = Post.find_one({'_id': ObjectId(id)})
+        author_id = str(post_data['author']['id'])
+        # print(author_id)
+        if author_id == session['ids']:
+            try:
+                Post.delete_one({'_id': ObjectId(id)})
+                print('post delete')
 
-        return redirect('/')
-    except:
-        return jsonify({
-            'message': 'post delete fail'
-        })
+                return redirect('/')
+            except:
+                return jsonify({
+                    'message': 'post delete fail'
+                })
+        else:
+            return ('', 204)
+    else:
+        return redirect('/login')
 
 @app.route('/post_allow/<id>')
 def post_allow(id):
