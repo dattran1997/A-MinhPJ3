@@ -96,7 +96,7 @@
 }
 
 .footer-area{
-  height: 31vh;
+  min-height: 31vh;
   padding: 39px;
 }
 
@@ -120,4 +120,17 @@
   height: 4vh;
   padding-right: 10px;
   margin-bottom: 0px;
+}
+
+
+/* modal */
+
+#deactivate_modal .modal-body{
+  padding: 25px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#deactivate_modal.modal{
+  top: 5vh;
 }

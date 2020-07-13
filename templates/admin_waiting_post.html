@@ -10,7 +10,7 @@
   </head>
   <body>
     <nav class="navbar navbar-light bg-light nav-area">
-      <a href="/" >Brand</a>
+      <a href="/" >Pic Design</a>
       <div class="left-nav ">
         {% if session['admin_logged'] %}
           <a>Welcome, {{session['admin_name']}}!</a>
@@ -29,11 +29,20 @@
           <span>Waiting Post</span>
         </a>
         <br>
-        <a class="btn btn-primary form-control text-left" href="/admin_page/checked">
+        <a class="btn btn-primary mb-2 form-control text-left" href="/admin_page/checked">
           <i class="fas fa-check mr-2"></i>
           <span>Checked Post</span>
         </a>
+        <br>
+        {% if session['is_admin'] == true %}
+          <a class="btn btn-primary mb-2 form-control text-left" href="/admin_page/admin_manager">
+              <i class="fas fa-user-shield mr-2"></i>
+              <span>Admin Manager</span>
+          </a>
+        {% endif %}
       </div>
+      <!-- start main content -->
+
       <div class="col-lg-9 stock-container-main">
         <div class="stock-container masonry mx-auto">
             {% for post in posts %}
@@ -48,6 +57,8 @@
             {% endfor %}
         </div>
       </div>
+
+      <!-- end main content -->
     </section>
     <footer class="footer-area bg-dark">
       <div class="row">

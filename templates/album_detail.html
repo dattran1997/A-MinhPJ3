@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/album_detail.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Album detail</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light nav-area">
+        <a href="/" >Pic Design</a>
+        <div class="left-nav ">
+            {% if session['loggedin'] %}
+            <a href="/upload">upload</a>
+            |
+            <a href="/user/{{session['ids']}}">hello, {{session['username']}}!</a>
+            |
+            <a id="logout-button" href="/logout">logout</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- main content -->
+    <p id='album-detail-name' class="p-4"><a href="/album/{{user_id}}">collection</a> / <b id='album-name'></b> </p>
+    <div class="album-detail-container container ">
+        <div id='post-item-container' class="row">
+          <!-- jquery load data -->
+        </div> 
+        <div id='post-suggest-container' class ='row'>
+          <!-- jquery load data --> 
+        </div>
+    </div>
+
+
+    <footer class="footer-area bg-dark">
+        <div class="row">
+          <div class="col-lg-3">
+            <h3>CONTENT</h3>
+            <p>New resources</p>
+            <p>The most popular content</p>
+            <p>Search trands</p>
+            <p>Blog</p>
+          </div>
+          <div class="col-lg-3">
+            <h3>INFORMATION</h3>
+            <p>Plans & pricing</p>
+            <p>About us</p>
+            <p>Jobs</p>
+            <p>Become a contributor</p>
+            <p>Shutterstock promo code</p>
+          </div>
+          <div class="col-lg-3">
+            <h3>LEGAL</h3>
+            <p>Terms & conditions</p>
+            <p>Privacy policy</p>
+            <p>Copyright information</p>
+            <p>Cookies policy</p>
+          </div>
+          <div class="col-lg-3">
+            <h3>Social</h3>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter-square"></i>
+          </div>
+        </div>
+    </footer>
+    <footer class="bottom-footer-area bg-dark text-right">
+        <p class="bottom-text">Copyright ©  2010-2019 All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/static/js/album_detail.js"></script>
+</body>
+</html>

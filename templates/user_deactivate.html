@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/user_deactivate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Deactivate info</title>
+</head>
+<body>
+    {% if deactivate_status == 'user_valid' %}
+        <div class="deactivate-info text-center">
+            <h3 class="text-info">Your account is now deactivated, please activate to come back</h3>
+            <a id='user-activate-btn' class="btn btn-primary">Activate</a>
+        </div> 
+    {% elif deactivate_status == 'user_invalid' %}
+        <div class="deactivate-info text-center">
+            <h3 class="text-info">Your account is now deactivated due to unexpact behavior, please contact to admin for reactivation</h3>
+        </div>
+    {% elif deactivate_status == 'guest' %}
+        <div class="deactivate-info text-center">
+            <h3 class="text-info">Oops! Account has been deactivated</h3>
+        </div>
+    {% endif %}
+
+     <!-- addition html -->
+
+    <!-- modal -->
+    <div id='activate_modal' class="modal text-center" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="text-success">Welcome back!, your account has been activated successful</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../static/js/user_deactivate.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@
   </head>
   <body>
     <nav class="navbar navbar-light bg-light nav-area">
-      <a href="/" >Brand</a>
+      <a href="/" >Pic Design</a>
       <div class="left-nav ">
         {% if session['loggedin'] %}
           <a href="/upload">upload</a>
@@ -28,7 +28,11 @@
         <h5>User</h5>
         <p>{{user_info.username}}</p>
         <p class="post-count">Post: {{post_number}}</p>
-
+          {% if session['ids'] == user_ids %}
+            <a id='user-deactivate-btn' class="btn btn-danger mx-auto w-50" >Deactive</a>
+          {% endif %}
+          <br>
+          <a id='album-btn' class="btn btn-primary mt-2 w-50" href='#'>Album</a>
       </div>
       <div class="col-lg-9 stock-container-main">
         <div class="stock-container masonry mx-auto">
@@ -78,8 +82,28 @@
     <footer class="bottom-footer-area bg-dark text-right">
       <p class="bottom-text">Copyright ©  2010-2019 All rights reserved.</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- addition html -->
+
+    <!-- modal -->
+    <div id='deactivate_modal' class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="text-danger">You really want to deactivate your account</p>
+          </div>
+          <div class="modal-footer">
+            <button id='confirm-deactivate-btn' type="button" class="btn btn-warning">Confirm Deactivate</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../static/js/user.js"></script>
   </body>
 </html>

@@ -31,7 +31,7 @@
   display: inline-block;
   font-size: 18px;
   color: rgba(74,74,74,.75);
-  font-weight: 500!important
+  font-weight: 500!important;
   cursor: pointer;
 }
 
@@ -125,12 +125,12 @@
   text-transform: uppercase;
 }
 
-.stock-container a:hover  .card-box-overlay{
+.stock-container a:hover .card-box-overlay{
   display: block;
 }
 
 .footer-area{
-  height: 31vh;
+  min-height: 31vh;
   padding: 39px;
 }
 

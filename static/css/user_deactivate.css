@@ -1,0 +1,19 @@
+.deactivate-info{
+    padding-top: 32vh;
+}
+
+.deactivate-info .text-info{
+    padding-bottom: 10px;
+}
+
+/* modal */
+
+#deactivate_modal .modal-body{
+    padding: 25px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+#activate_modal.modal{
+    top: 5vh;
+}

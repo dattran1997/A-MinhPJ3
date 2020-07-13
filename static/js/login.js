@@ -10,6 +10,7 @@ $( document ).ready(function() {
 
     $('.login-form').submit(function(e){
       e.preventDefault();
+      console.log(username +' '+ password);
 
       $.ajax({
         url: "/login",
